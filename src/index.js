@@ -45,8 +45,9 @@ const todoModel = mongoose.model("todo", todoSchema);
 // backend apis
 const isNullOrUndefined = (val) => val === null || val === undefined;
 
-app.get("/", async (req, res) => {
-  res.send("Server started!!");
+app.get("/todo", async (req, res) => {
+  const allTodos = await todoModel.find();
+  res.send(allTodos);
 });
 
 app.post("/todo", async (req, res) => {
@@ -88,4 +89,3 @@ app.delete("/todo/:todoid", async (req, res) => {
 });
 
 app.listen(process.env.PORT);
-//app.listen(9999);
