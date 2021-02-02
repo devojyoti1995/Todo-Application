@@ -7,7 +7,7 @@ app.use(express.json()); // added body key to req
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: "*", //"https://todo-frontend-devojyoti.herokuapp.com/",
   })
 );
 
@@ -20,7 +20,8 @@ app.use(
 
 /////
 
-const mongoUrl = "mongodb://localhost:27017/ToDo";
+const mongoUrl =
+  "mongodb+srv://Devojyoti:Devo@1995@cluster0.whpdu.mongodb.net/ToDo?retryWrites=true&w=majority";
 mongoose
   .connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -87,4 +88,4 @@ app.delete("/todo/:todoid", async (req, res) => {
   }
 });
 
-app.listen(9999);
+app.listen(process.env.PORT);
