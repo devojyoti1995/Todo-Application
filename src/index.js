@@ -45,10 +45,9 @@ const todoModel = mongoose.model("todo", todoSchema);
 // backend apis
 const isNullOrUndefined = (val) => val === null || val === undefined;
 
-// app.get("/todo", async (req, res) => {
-//   const allTodos = await todoModel.find();
-//   res.send(allTodos);
-// });
+app.get("/", async (req, res) => {
+  res.send("Server started!!");
+});
 
 app.post("/todo", async (req, res) => {
   const todo = req.body;
